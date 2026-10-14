@@ -1,657 +1,299 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MEDICA PHARMA — Professional Wholesale & Distribution</title>
-<style>
-:root { --primary: #0d9488; --secondary: #14b8a6; --bg: #f8fafc; --card: #ffffff; --text: #0f172a; --muted: #64748b; --border: #e2e8f0; --accent: #f59e0b; }
-* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-body { background: var(--bg); color: var(--text); line-height: 1.7; padding-bottom: 60px; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medica Pharma - Professional Wholesale & Distribution</title>
+    <!-- FontAwesome Icons for Home, Order, Admin, etc. -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #008080;
+            --secondary-color: #004d4d;
+            --accent-color: #ff9900;
+            --bg-gradient: linear-gradient(135deg, #00b09b, #96c93d);
+            --light-bg: #f9f9f9;
+            --text-dark: #333;
+        }
 
-/* Header & Modern Navbar */
-header { background: linear-gradient(135deg, #0f766e, #0d9488, #14b8a6); color: #fff; padding: 24px 16px; text-align: center; box-shadow: 0 4px 12px rgba(0,0,0,0.08); position: relative; }
-header h1 { font-size: 2.2rem; margin-bottom: 4px; letter-spacing: 1px; font-weight: 800; text-transform: uppercase; }
-header p { font-size: 1.05rem; opacity: 0.95; margin-bottom: 16px; font-weight: 300; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--light-bg);
+            color: var(--text-dark);
+        }
 
-.navbar { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; background: rgba(255, 255, 255, 0.15); padding: 10px 16px; border-radius: 30px; max-width: 650px; margin: 0 auto; backdrop-filter: blur(5px); }
-.nav-link { background: transparent; color: #fff; border: 1px solid rgba(255,255,255,0.4); padding: 8px 18px; border-radius: 20px; cursor: pointer; font-size: 0.95rem; font-weight: 600; transition: all 0.25s ease; text-decoration: none; }
-.nav-link:hover, .nav-link.active { background: #fff; color: var(--primary); border-color: #fff; transform: translateY(-2px); box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+        header {
+            background: linear-gradient(135deg, #00796b, #004d40);
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
 
-.header-actions { position: absolute; top: 20px; right: 20px; display: flex; gap: 10px; }
-.container { max-width: 1200px; margin: 0 auto; padding: 25px 16px; }
+        .logo-container img {
+            max-width: 180px;
+            height: auto;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            background: white;
+            padding: 5px;
+        }
 
-/* Page Sections Management */
-.page-section { display: none; animation: fadeIn 0.4s ease-in-out; }
-.page-section.active-page { display: block; }
-@keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+        header h1 {
+            margin: 10px 0 5px 0;
+            font-size: 2.5rem;
+            letter-spacing: 1px;
+        }
 
-.top-bar { display: flex; flex-wrap: wrap; gap: 12px; justify-content: space-between; align-items: center; margin-bottom: 24px; background: var(--card); padding: 18px; border-radius: 14px; border: 1px solid var(--border); box-shadow: 0 2px 6px rgba(0,0,0,0.03); }
-.controls { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
-input, select, button, textarea { padding: 11px 16px; font-size: 0.95rem; border: 1px solid var(--border); border-radius: 10px; outline: none; background: #fff; transition: border-color 0.2s, box-shadow 0.2s; }
-input:focus, select:focus, textarea:focus { border-color: var(--secondary); box-shadow: 0 0 0 3px rgba(20, 184, 166, 0.15); }
-button { background: var(--primary); color: #fff; border: none; cursor: pointer; font-weight: 600; transition: background 0.2s, transform 0.1s; }
-button:hover { background: #0f766e; }
-button:active { transform: scale(0.98); }
-.btn-red { background: #ef4444; } .btn-red:hover { background: #dc2626; }
-.btn-secondary { background: #475569; } .btn-secondary:hover { background: #334155; }
-.btn-accent { background: var(--accent); color: #fff; } .btn-accent:hover { background: #d97706; }
-.btn-whatsapp { background: #25d366; color: #fff; display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; border-radius: 10px; font-weight: 700; }
-.btn-whatsapp:hover { background: #20ba5a; }
+        header p {
+            margin: 0 0 20px 0;
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
 
-.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 22px; }
-.card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; display: flex; flex-direction: column; box-shadow: 0 3px 6px rgba(0,0,0,0.03); transition: transform 0.25s, box-shadow 0.25s; position: relative; }
-.card:hover { transform: translateY(-4px); box-shadow: 0 12px 20px -5px rgba(0,0,0,0.08); }
-.product-img { width: 100%; height: 190px; background: #f1f5f9; display: flex; align-items: center; justify-content: center; overflow: hidden; border-bottom: 1px solid var(--border); }
-.product-img img { width: 100%; height: 100%; object-fit: cover; }
-.cardbody { padding: 18px; display: flex; flex-direction: column; gap: 8px; flex-grow: 1; }
-.pname { font-size: 1.15rem; font-weight: 700; color: var(--text); }
-.muted { color: var(--muted); font-size: 0.88rem; }
-.price { font-size: 1.2rem; font-weight: 800; color: var(--primary); margin-top: auto; }
-.card-actions { display: flex; gap: 8px; margin-top: 10px; }
-.card-actions button { flex: 1; padding: 9px; font-size: 0.88rem; border-radius: 8px; }
+        /* Top Action Buttons (Admin & Cart) */
+        .top-actions {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
 
-.admin-section { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 22px; margin-bottom: 24px; box-shadow: 0 2px 6px rgba(0,0,0,0.03); border-left: 5px solid var(--primary); }
-.admin-section.hidden { display: none; }
-.admin-section h2 { font-size: 1.4rem; margin-bottom: 14px; color: var(--primary); }
-.form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; margin-bottom: 14px; }
-.form-group { display: flex; flex-direction: column; gap: 6px; }
-.form-group label { font-size: 0.88rem; font-weight: 600; color: var(--muted); }
-.empty-state { text-align: center; padding: 50px; color: var(--muted); grid-column: 1 / -1; font-size: 1.15rem; }
-.empty-state.hidden { display: none; }
+        .btn {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: 0.3s;
+            text-decoration: none;
+        }
 
-/* Enhanced Static Pages Content Style */
-.content-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 35px; box-shadow: 0 4px 12px rgba(0,0,0,0.04); margin-bottom: 25px; }
-.content-card h2 { color: var(--primary); font-size: 2rem; margin-bottom: 18px; font-weight: 800; border-bottom: 2px solid var(--border); padding-bottom: 10px; }
-.content-card h3 { color: var(--primary); font-size: 1.4rem; margin-top: 22px; margin-bottom: 10px; font-weight: 700; }
-.content-card p { margin-bottom: 14px; color: var(--text); font-size: 1.08rem; line-height: 1.8; }
+        .btn:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
 
-/* Feature Highlights Grid in About Us */
-.features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; margin-top: 20px; }
-.feature-box { background: #f0fdfa; border: 1px solid #ccfbf1; padding: 20px; border-radius: 12px; text-align: center; }
-.feature-box h4 { color: var(--primary); font-size: 1.1rem; margin-bottom: 8px; font-weight: 700; }
-.feature-box p { font-size: 0.92rem; color: var(--muted); margin: 0; }
+        /* Admin button hidden by default unless unlocked */
+        #admin-btn {
+            display: none;
+            background-color: #34495e;
+        }
 
-/* Social Links & Contact Cards */
-.social-links { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 20px; }
-.social-btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 20px; border-radius: 10px; color: #fff; font-weight: 600; text-decoration: none; font-size: 0.95rem; transition: opacity 0.2s, transform 0.2s; }
-.social-btn:hover { opacity: 0.9; transform: translateY(-2px); }
-.sb-whatsapp { background: #25d366; }
-.sb-facebook { background: #1877f2; }
-.sb-tiktok { background: #010101; }
-.sb-email { background: #ea4335; }
+        /* Navigation Menu */
+        nav {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 12px;
+            border-radius: 30px;
+            max-width: 700px;
+            margin: 0 auto;
+            backdrop-filter: blur(5px);
+        }
 
-/* Cart & Checkout Modal */
-.modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; z-index: 1000; padding: 16px; backdrop-filter: blur(3px); }
-.modal.hidden { display: none; }
-.modal-content { background: #fff; width: 100%; max-width: 520px; border-radius: 16px; padding: 28px; box-shadow: 0 25px 30px -10px rgba(0,0,0,0.15); max-height: 90vh; overflow-y: auto; }
-.modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px; border-bottom: 1px solid var(--border); padding-bottom: 12px; }
-.modal-header h3 { font-size: 1.35rem; color: var(--primary); font-weight: 700; }
-.close-modal { background: none; color: var(--muted); font-size: 1.4rem; cursor: pointer; padding: 4px 8px; border: none; }
-.cart-items-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 18px; max-height: 220px; overflow-y: auto; }
-.cart-item-row { display: flex; justify-content: space-between; align-items: center; background: var(--bg); padding: 10px 14px; border-radius: 10px; font-size: 0.95rem; border: 1px solid var(--border); }
-.cart-total { font-size: 1.2rem; font-weight: 800; margin-bottom: 18px; text-align: right; color: var(--primary); }
-.cart-btn-wrapper { position: relative; }
+        nav button {
+            background: transparent;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: 0.3s;
+        }
 
-footer { text-align: center; margin-top: 50px; color: var(--muted); font-size: 0.9rem; border-top: 1px solid var(--border); padding-top: 20px; }
-</style>
+        nav button.active, nav button:hover {
+            background: white;
+            color: var(--primary-color);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        /* Main Content Container */
+        .container {
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .tab-content {
+            display: none;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Banner Image in Home */
+        .hero-banner {
+            width: 100%;
+            max-height: 400px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        /* Footer & Creator Credit */
+        footer {
+            text-align: center;
+            padding: 25px;
+            background-color: #222;
+            color: white;
+            margin-top: 50px;
+        }
+
+        footer .creator {
+            margin-top: 8px;
+            color: var(--accent-color);
+            font-weight: bold;
+            font-size: 1.05rem;
+        }
+    </style>
 </head>
 <body>
 
-<header>
-    <h1>MEDICA PHARMA</h1>
-    <p>Professional Wholesale & Distribution Pharmaceuticals</p>
-    
-    <!-- Navbar Links -->
-    <nav class="navbar">
-        <button class="nav-link active" onclick="switchPage('home')">Home</button>
-        <button class="nav-link" onclick="switchPage('about')">About Us</button>
-        <button class="nav-link" onclick="switchPage('products')">Products</button>
-        <button class="nav-link" onclick="switchPage('order')">Order</button>
-        <button class="nav-link" onclick="switchPage('contact')">Contact</button>
-    </nav>
-
-    <div class="header-actions">
-        <button id="toggleAdminBtn" class="btn-secondary">Admin ⚙️</button>
-        <div class="cart-btn-wrapper">
-            <button id="openCartBtn" class="btn-accent">🛒 Cart (<span id="cartCount">0</span>)</button>
+    <header>
+        <!-- د لوګو برخه -->
+        <div class="logo-container">
+            <img src="watermarked_img_13417041837332475040.jpg" alt="Medica Pharma Logo">
         </div>
-    </div>
-</header>
-
-<div class="container">
-
-    <!-- 1. HOME PAGE -->
-    <div id="page-home" class="page-section active-page">
-        <div class="content-card" style="text-align: center; padding: 60px 25px;">
-            <h2 style="font-size: 2.6rem; margin-bottom: 15px; border: none; padding: 0;">Welcome to Medica Pharma</h2>
-            <p style="font-size: 1.2rem; max-width: 750px; margin: 0 auto 30px auto;">Your trusted and reliable wholesale partner for high-quality medicines and healthcare distribution. Competitive pricing in Afghanis (AFN) and US Dollars (USD).</p>
-            <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
-                <button onclick="switchPage('products')" style="padding: 14px 28px; font-size: 1.05rem; border-radius: 10px;">View Products Catalog 💊</button>
-                <button onclick="switchPage('order')" class="btn-accent" style="padding: 14px 28px; font-size: 1.05rem; border-radius: 10px;">Place Your Order 🛒</button>
-            </div>
+        <h1>MEDICA PHARMA</h1>
+        <p>Professional Wholesale & Distribution Pharmaceuticals</p>
+        
+        <!-- د اډمین او کارټ تڼۍ -->
+        <div class="top-actions">
+            <!-- Admin button (يوازې تاسو ته ښکاري یا د پاسورډ په واسطه خلاصیږي) -->
+            <button id="admin-btn" class="btn" onclick="openAdminPanel()">
+                <i class="fa-solid fa-user-shield"></i> Admin Panel
+            </button>
+            <button class="btn" onclick="switchTab('order')">
+                <i class="fa-solid fa-cart-shopping"></i> Cart (<span id="cart-count">0</span>)
+            </button>
+            <button class="btn" onclick="promptAdminLogin()" style="background-color: #555; font-size: 0.8rem; padding: 5px 10px;">
+                <i class="fa-solid fa-key"></i> Login
+            </button>
         </div>
 
-        <div class="features-grid">
-            <div class="feature-box">
-                <h4>100% Genuine</h4>
-                <p>Certified medicines sourced from top tier global and regional manufacturers.</p>
-            </div>
-            <div class="feature-box">
-                <h4>Wholesale Prices</h4>
-                <p>Best wholesale rates available in both AFN and USD currencies.</p>
-            </div>
-            <div class="feature-box">
-                <h4>Direct WhatsApp Orders</h4>
-                <p>Instant order dispatch directly to our management via WhatsApp.</p>
-            </div>
-        </div>
-    </div>
+        <!-- اصلي مینو او نښې -->
+        <nav>
+            <button class="tab-btn active" onclick="switchTab('home')">
+                <i class="fa-solid fa-house"></i> Home
+            </button>
+            <button class="tab-btn" onclick="switchTab('about')">
+                <i class="fa-solid fa-circle-info"></i> About Us
+            </button>
+            <button class="tab-btn" onclick="switchTab('products')">
+                <i class="fa-solid fa-pills"></i> Products
+            </button>
+            <button class="tab-btn" onclick="switchTab('order')">
+                <i class="fa-solid fa-clipboard-list"></i> Order
+            </button>
+            <button class="tab-btn" onclick="switchTab('contact')">
+                <i class="fa-solid fa-envelope"></i> Contact
+            </button>
+        </nav>
+    </header>
 
-    <!-- 2. ABOUT US PAGE -->
-    <div id="page-about" class="page-section">
-        <div class="content-card">
+    <div class="container">
+        <!-- Home Tab -->
+        <div id="home" class="tab-content active">
+            <!-- د کور پاڼې مسلکي انځور -->
+            <img src="watermarked_img_3862391051246070513.jpg" alt="Medica Pharma Warehouse" class="hero-banner">
+            
+            <h2>Welcome to Medica Pharma</h2>
+            <p>Your trusted and reliable wholesale partner for high-quality medicines and healthcare distribution. Competitive pricing in Afghanis (AFN) and US Dollars (USD).</p>
+        </div>
+
+        <!-- About Us Tab -->
+        <div id="about" class="tab-content">
             <h2>About Medica Pharma</h2>
             <p><strong>Medica Pharma</strong> is a premier wholesale and distribution pharmaceutical organization dedicated to providing high-quality medicines, surgical items, and healthcare solutions across the region.</p>
-            <p>Founded with a commitment to excellence, integrity, and healthcare accessibility, our mission is to bridge the gap between top-tier pharmaceutical manufacturers and healthcare providers, ensuring safe, effective, and affordable medications are always within reach.</p>
-            
-            <h3>Our Core Values & Strengths</h3>
-            <div class="features-grid" style="margin-top: 15px;">
-                <div class="feature-box">
-                    <h4>Quality Assurance</h4>
-                    <p>Rigorous storage and distribution standards meeting pharmaceutical guidelines.</p>
-                </div>
-                <div class="feature-box">
-                    <h4>Reliable Distribution</h4>
-                    <p>Fast, secure, and dependable supply chain network for pharmacies and clinics.</p>
-                </div>
-                <div class="feature-box">
-                    <h4>Customer Focus</h4>
-                    <p>Dedicated professional support for all wholesale orders and medical queries.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- 3. PRODUCTS PAGE -->
-    <div id="page-products" class="page-section">
-        <div class="top-bar">
-            <div class="controls" style="flex: 1; max-width: 400px;">
-                <input type="text" id="searchBox" placeholder="Search medicine, company or brand..." style="width: 100%;">
-            </div>
-            <div class="controls">
-                <select id="currencySelect">
-                    <option value="AFN">Currency: AFN (؋)</option>
-                    <option value="USD">Currency: USD ($)</option>
-                </select>
-                <select id="sortSelect">
-                    <option value="name">Sort by name</option>
-                    <option value="priceLow">Lowest price first</option>
-                    <option value="priceHigh">Highest price first</option>
-                </select>
-            </div>
         </div>
 
-        <div id="adminPanel" class="admin-section hidden">
-            <h2>Medicine Management (Admin Panel)</h2>
-            <p class="muted" style="margin-bottom: 14px;">Add new medications, product photos, stock count, and prices in AFN or USD.</p>
-            <form id="productForm">
-                <input type="hidden" id="editIndex" value="">
-                <div class="form-grid">
-                    <div class="form-group">
-                        <label>Medicine Name *</label>
-                        <input type="text" id="prodName" required placeholder="e.g. Paracetamol 500mg">
-                    </div>
-                    <div class="form-group">
-                        <label>Company / Brand</label>
-                        <input type="text" id="prodCompany" placeholder="e.g. ZAFA Pharma">
-                    </div>
-                    <div class="form-group">
-                        <label>Pack / Size</label>
-                        <input type="text" id="prodSize" placeholder="e.g. 100 Tablets / Bottle">
-                    </div>
-                    <div class="form-group">
-                        <label>Price *</label>
-                        <input type="number" id="prodSelling" required step="0.01" min="0" placeholder="100">
-                    </div>
-                    <div class="form-group">
-                        <label>Stock Quantity</label>
-                        <input type="number" id="prodStock" min="0" value="25">
-                    </div>
-                    <div class="form-group">
-                        <label>Product Photo (Image)</label>
-                        <input type="file" id="prodPhoto" accept="image/*">
-                    </div>
-                </div>
-                <div style="display: flex; gap: 10px;">
-                    <button type="submit" id="saveBtn">Save Medication</button>
-                    <button type="button" id="cancelBtn" class="btn-red hidden">Cancel</button>
-                </div>
-            </form>
+        <!-- Products Tab -->
+        <div id="products" class="tab-content">
+            <h2>Medicine Management & Products</h2>
+            <p>Browse our verified list of pharmaceuticals and wholesale stock.</p>
         </div>
 
-        <div id="productsGrid" class="grid"></div>
-        <div id="emptyState" class="empty-state hidden">No medications found matching your search.</div>
-    </div>
-
-    <!-- 4. ORDER PAGE -->
-    <div id="page-order" class="page-section">
-        <div class="content-card" style="max-width: 750px; margin: 0 auto;">
+        <!-- Order Tab -->
+        <div id="order" class="tab-content">
             <h2>Place Your Order</h2>
-            <p class="muted" style="margin-bottom: 20px;">Review your selected cart items and submit your order directly via WhatsApp or Email.</p>
-            
-            <div id="orderPageCartList" class="cart-items-list" style="max-height: none; margin-bottom: 20px;"></div>
-            <div id="orderPageTotal" class="cart-total" style="font-size: 1.3rem; margin-bottom: 20px;">Total: 0 AFN</div>
-
-            <form id="standaloneOrderForm">
-                <div class="form-group" style="margin-bottom: 14px;">
-                    <label>Full Name *</label>
-                    <input type="text" id="ordCustName" required placeholder="Ahmad Khan">
-                </div>
-                <div class="form-group" style="margin-bottom: 14px;">
-                    <label>Phone Number *</label>
-                    <input type="text" id="ordCustPhone" required placeholder="+93 782 665 516">
-                </div>
-                <div class="form-group" style="margin-bottom: 22px;">
-                    <label>Delivery Address / City *</label>
-                    <textarea id="ordCustAddress" required rows="3" placeholder="Kabul, Afghanistan"></textarea>
-                </div>
-                
-                <div style="display: flex; flex-direction: column; gap: 12px;">
-                    <button type="button" id="ordWhatsappBtn" class="btn-whatsapp" style="padding: 14px; font-size: 1.1rem;">
-                        📲 Send Order via WhatsApp (0782665516)
-                    </button>
-                    <button type="submit" class="btn-secondary" style="padding: 12px; font-size: 1rem; border-radius: 10px;">
-                        📧 Send Order via Email
-                    </button>
-                </div>
-            </form>
+            <p>Review your selected cart items and submit your order directly via WhatsApp or Email.</p>
         </div>
-    </div>
 
-    <!-- 5. CONTACT US PAGE -->
-    <div id="page-contact" class="page-section">
-        <div class="content-card" style="max-width: 750px; margin: 0 auto;">
+        <!-- Contact Tab -->
+        <div id="contact" class="tab-content">
             <h2>Contact Us</h2>
-            <p>Get in touch with Medica Pharma for wholesale inquiries, bulk orders, and distribution partnerships.</p>
-            <div style="margin-top: 25px; display: flex; flex-direction: column; gap: 14px; font-size: 1.1rem;">
-                <p>📍 <strong>Address:</strong> Main Pharmacy Wholesale Market, Kabul, Afghanistan</p>
-                <p>📞 <strong>Phone / WhatsApp:</strong> +93 782 665 516</p>
-                <p>✉️ <strong>Email:</strong> support@medicapharma.com *(Temporary Email)*</p>
-            </div>
-
-            <h3 style="margin-top: 30px;">Connect With Us Online</h3>
-            <div class="social-links">
-                <a href="https://wa.me/93782665516" target="_blank" class="social-btn sb-whatsapp">💬 WhatsApp Chat</a>
-                <a href="https://facebook.com" target="_blank" class="social-btn sb-facebook">👥 Facebook Page</a>
-                <a href="https://tiktok.com" target="_blank" class="social-btn sb-tiktok">🎵 TikTok Channel</a>
-                <a href="mailto:support@medicapharma.com" class="social-btn sb-email">✉️ Email Us</a>
-            </div>
+            <p>📍 <strong>Address:</strong> Main Pharmacy Wholesale Market, Kabul, Afghanistan</p>
+            <p>📞 <strong>Phone / WhatsApp:</strong> +93 782 665 516</p>
         </div>
     </div>
 
-</div>
-
-<!-- Cart & Checkout Modal -->
-<div id="cartModal" class="modal hidden">
-    <div class="modal-content">
-        <div class="modal-header">
-            <h3>Your Shopping Cart</h3>
-            <button class="close-modal" id="closeModalBtn">&times;</button>
+    <footer>
+        <p>© 2026 MEDICA PHARMA Online Wholesale Store — All rights reserved.</p>
+        <!-- ستاسو نوم د ډزاین کونکي په توګه -->
+        <div class="creator">
+            <i class="fa-solid fa-code"></i> Designed & Developed by: Daftani
         </div>
-        <div id="cartItemsList" class="cart-items-list"></div>
-        <div id="cartTotal" class="cart-total">Total: 0 AFN</div>
-        <div style="display: flex; gap: 10px;">
-            <button type="button" onclick="switchPage('order'); closeModal();" style="width: 100%; padding: 12px; font-size: 1rem; border-radius: 10px;">Proceed to Order Page ➡️</button>
-        </div>
-    </div>
-</div>
+    </footer>
 
-<footer>
-    <p>© 2026 MEDICA PHARMA Online Wholesale Store — All rights reserved.</p>
-</footer>
+    <script>
+        // د ټبونو د بدلولو جاواسکریپټ فنکشن
+        function switchTab(tabId) {
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(c => c.classList.remove('active'));
 
-<script>
-// Page Navigation System
-function switchPage(pageId) {
-    document.querySelectorAll('.page-section').forEach(sec => sec.classList.remove('active-page'));
-    document.querySelectorAll('.nav-link').forEach(btn => btn.classList.remove('active'));
+            const buttons = document.querySelectorAll('nav button');
+            buttons.forEach(b => b.classList.remove('active'));
 
-    const target = document.getElementById('page-' + pageId);
-    if (target) target.classList.add('active-page');
-
-    // Highlight active nav button
-    document.querySelectorAll('.nav-link').forEach(btn => {
-        if (btn.textContent.toLowerCase().includes(pageId) || (pageId === 'home' && btn.textContent.includes('Home')) || (pageId === 'about' && btn.textContent.includes('About')) || (pageId === 'products' && btn.textContent.includes('Products')) || (pageId === 'order' && btn.textContent.includes('Order')) || (pageId === 'contact' && btn.textContent.includes('Contact'))) {
-            btn.classList.add('active');
+            document.getElementById(tabId).classList.add('active');
+            event.currentTarget.classList.add('active');
         }
-    });
 
-    if (pageId === 'order') {
-        renderOrderPageCart();
-    }
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-}
-
-const starterImg = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='150' height='150' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='1.5'><rect width='18' height='18' x='3' y='3' rx='2'/><circle cx='9' cy='9' r='2'/><path d='m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21'/></svg>";
-
-let products = JSON.parse(localStorage.getItem("medica_pharma_items_v4") || "null");
-if (!Array.isArray(products) || products.length === 0) {
-    products = [
-        { id: "1", name: "XYNOSINE Nasal Spray", company: "ZAFA Pharma", size: "15 ml", selling: 40, stock: 30, image: starterImg },
-        { id: "2", name: "Paracetamol Syrup", company: "Medica Global", size: "120 ml", selling: 65, stock: 50, image: starterImg },
-        { id: "3", name: "Amoxicillin Capsules", company: "PharmaCorp", size: "500mg - 50 Caps", selling: 250, stock: 20, image: starterImg }
-    ];
-}
-
-let cart = JSON.parse(localStorage.getItem("medica_pharma_cart_v4") || "[]");
-let tempImage = "";
-
-function getCurrencySymbol() {
-    return document.getElementById("currencySelect").value === "USD" ? "$" : "AFN";
-}
-
-function renderProducts() {
-    const query = document.getElementById("searchBox").value.trim().toLowerCase();
-    const sort = document.getElementById("sortSelect").value;
-    const currency = getCurrencySymbol();
-    const isAdminOpen = !document.getElementById("adminPanel").classList.contains("hidden");
-
-    let filtered = products.filter(p => (p.name + " " + (p.company || "") + " " + (p.size || "")).toLowerCase().includes(query));
-
-    if (sort === "priceLow") filtered.sort((a, b) => a.selling - b.selling);
-    else if (sort === "priceHigh") filtered.sort((a, b) => b.selling - a.selling);
-    else filtered.sort((a, b) => a.name.localeCompare(b.name));
-
-    const grid = document.getElementById("productsGrid");
-    const empty = document.getElementById("emptyState");
-
-    if (filtered.length === 0) {
-        grid.innerHTML = "";
-        empty.classList.remove("hidden");
-        return;
-    }
-    empty.classList.add("hidden");
-
-    grid.innerHTML = filtered.map(p => `
-        <div class="card">
-            <div class="product-img">
-                <img src="${p.image || starterImg}" alt="${p.name}">
-            </div>
-            <div class="cardbody">
-                <div class="pname">${p.name}</div>
-                <div class="muted">${p.company || "Company not specified"}${p.size ? " · " + p.size : ""}</div>
-                <div class="price">${Number(p.selling).toLocaleString()} ${currency}</div>
-                <div class="muted">Stock: ${p.stock || 0} units</div>
-                <div class="card-actions">
-                    <button type="button" class="btn-accent" onclick="addToCart('${p.id}')">Add to Cart 🛒</button>
-                </div>
-                <div class="card-actions ${isAdminOpen ? "" : "hidden"}">
-                    <button type="button" onclick="editProd('${p.id}')">Edit</button>
-                    <button type="button" class="btn-red" onclick="deleteProd('${p.id}')">Delete</button>
-                </div>
-            </div>
-        </div>
-    `).join("");
-}
-
-function updateCartCount() {
-    const totalCount = cart.reduce((sum, item) => sum + item.qty, 0);
-    document.getElementById("cartCount").textContent = totalCount;
-}
-
-function addToCart(id) {
-    const p = products.find(x => x.id === id);
-    if (!p) return;
-    const existing = cart.find(x => x.id === id);
-    if (existing) {
-        existing.qty += 1;
-    } else {
-        cart.push({ id: p.id, name: p.name, selling: p.selling, qty: 1 });
-    }
-    localStorage.setItem("medica_pharma_cart_v4", JSON.stringify(cart));
-    updateCartCount();
-    alert(p.name + " added to cart!");
-}
-
-function renderCartModal() {
-    const list = document.getElementById("cartItemsList");
-    const currency = getCurrencySymbol();
-    if (cart.length === 0) {
-        list.innerHTML = "<p class='muted' style='text-align:center;'>Your cart is empty.</p>";
-        document.getElementById("cartTotal").textContent = "Total: 0 " + currency;
-        return;
-    }
-
-    let total = 0;
-    list.innerHTML = cart.map(item => {
-        const itemTotal = item.selling * item.qty;
-        total += itemTotal;
-        return `
-            <div class="cart-item-row">
-                <div>
-                    <strong>${item.name}</strong><br>
-                    <span class="muted">${item.qty} x ${item.selling} ${currency}</span>
-                </div>
-                <div>
-                    <span style="font-weight:bold; margin-right:10px;">${itemTotal.toLocaleString()} ${currency}</span>
-                    <button type="button" class="btn-red" style="padding:4px 8px; font-size:0.75rem;" onclick="removeFromCart('${item.id}')">✕</button>
-                </div>
-            </div>
-        `;
-    }).join("");
-
-    document.getElementById("cartTotal").textContent = "Total: " + total.toLocaleString() + " " + currency;
-}
-
-function renderOrderPageCart() {
-    const list = document.getElementById("orderPageCartList");
-    const currency = getCurrencySymbol();
-    if (cart.length === 0) {
-        list.innerHTML = "<p class='muted' style='text-align:center;'>Your cart is empty. Please select products from the Products page.</p>";
-        document.getElementById("orderPageTotal").textContent = "Total: 0 " + currency;
-        return;
-    }
-
-    let total = 0;
-    list.innerHTML = cart.map(item => {
-        const itemTotal = item.selling * item.qty;
-        total += itemTotal;
-        return `
-            <div class="cart-item-row">
-                <div>
-                    <strong>${item.name}</strong><br>
-                    <span class="muted">${item.qty} x ${item.selling} ${currency}</span>
-                </div>
-                <div>
-                    <span style="font-weight:bold; margin-right:10px;">${itemTotal.toLocaleString()} ${currency}</span>
-                    <button type="button" class="btn-red" style="padding:4px 8px; font-size:0.75rem;" onclick="removeFromCart('${item.id}'); renderOrderPageCart();">✕</button>
-                </div>
-            </div>
-        `;
-    }).join("");
-
-    document.getElementById("orderPageTotal").textContent = "Total: " + total.toLocaleString() + " " + currency;
-}
-
-function removeFromCart(id) {
-    cart = cart.filter(x => x.id !== id);
-    localStorage.setItem("medica_pharma_cart_v4", JSON.stringify(cart));
-    updateCartCount();
-    renderCartModal();
-}
-
-function closeModal() {
-    document.getElementById("cartModal").classList.add("hidden");
-}
-
-document.getElementById("openCartBtn").addEventListener("click", () => {
-    renderCartModal();
-    document.getElementById("cartModal").classList.remove("hidden");
-});
-
-document.getElementById("closeModalBtn").addEventListener("click", closeModal);
-
-// WhatsApp Order Button Logic (Phone: 0782665516 -> international format: 93782665516)
-document.getElementById("ordWhatsappBtn").addEventListener("click", function() {
-    if (cart.length === 0) {
-        alert("Your cart is empty!");
-        return;
-    }
-    const name = document.getElementById("ordCustName").value.trim();
-    const phone = document.getElementById("ordCustPhone").value.trim();
-    const address = document.getElementById("ordCustAddress").value.trim();
-
-    if (!name || !phone || !address) {
-        alert("Please fill in your Name, Phone Number, and Delivery Address.");
-        return;
-    }
-
-    const currency = getCurrencySymbol();
-    let message = `*New Order - MEDICA PHARMA*\n\n*Customer:* ${name}\n*Phone:* ${phone}\n*Address:* ${address}\n\n*Items:*\n`;
-    let total = 0;
-    cart.forEach(item => {
-        message += `• ${item.name} (${item.qty} x ${item.selling} ${currency})\n`;
-        total += item.selling * item.qty;
-    });
-    message += `\n*Total Amount:* ${total.toLocaleString()} ${currency}\n*Payment:* Cash on Delivery`;
-
-    const ownerWhatsAppNumber = "93782665516"; 
-    const encodedMessage = encodeURIComponent(message);
-    const whatsappURL = `https://wa.me/${ownerWhatsAppNumber}?text=${encodedMessage}`;
-
-    window.open(whatsappURL, "_blank");
-});
-
-// Email Order Submission
-document.getElementById("standaloneOrderForm").addEventListener("submit", function(e) {
-    e.preventDefault();
-    if (cart.length === 0) {
-        alert("Your cart is empty!");
-        return;
-    }
-    const name = document.getElementById("ordCustName").value;
-    const phone = document.getElementById("ordCustPhone").value;
-    const address = document.getElementById("ordCustAddress").value;
-    const currency = getCurrencySymbol();
-
-    let emailBody = `New Order from MEDICA PHARMA\nCustomer: ${name}\nPhone: ${phone}\nAddress: ${address}\n\nItems:\n`;
-    let total = 0;
-    cart.forEach(item => {
-        emailBody += `- ${item.name} (${item.qty} x ${item.selling} ${currency})\n`;
-        total += item.selling * item.qty;
-    });
-    emailBody += `\nTotal Amount: ${total.toLocaleString()} ${currency}\nPayment: Cash on Delivery`;
-
-    const ownerEmail = "support@medicapharma.com";
-    const mailtoURL = `mailto:${ownerEmail}?subject=` + encodeURIComponent("New Order from " + name) + `&body=` + encodeURIComponent(emailBody);
-
-    window.location.href = mailtoURL;
-
-    cart = [];
-    localStorage.removeItem("medica_pharma_cart_v4");
-    updateCartCount();
-    document.getElementById("standaloneOrderForm").reset();
-    alert("Order email generated successfully!");
-    switchPage('home');
-});
-
-document.getElementById("searchBox").addEventListener("input", renderProducts);
-document.getElementById("sortSelect").addEventListener("change", renderProducts);
-document.getElementById("currencySelect").addEventListener("change", renderProducts);
-
-// Secured Admin Panel
-document.getElementById("toggleAdminBtn").addEventListener("click", () => {
-    const panel = document.getElementById("adminPanel");
-    const isHidden = panel.classList.contains("hidden");
-
-    if (isHidden) {
-        const password = prompt("Please enter Admin Password:");
-        if (password === "admin123") {
-            panel.classList.remove("hidden");
-            document.getElementById("toggleAdminBtn").textContent = "Admin 👁️";
-            renderProducts();
-        } else if (password !== null) {
-            alert("Incorrect password!");
+        // د اډمین د محرم ساتلو او فعالولو لپاره سادھ لاره (پاسورډ: admin123)
+        function promptAdminLogin() {
+            let pass = prompt("لطفاً د اډمین پاسورډ ولیکئ:");
+            if (pass === "daftani123") { // دلته خپل خوښې پاسورډ بدلولی شئ
+                localStorage.setItem("isAdmin", "true");
+                document.getElementById("admin-btn").style.display = "inline-flex";
+                alert("اډمین پینل ته په خیر راغلل!");
+            } else {
+                alert("تاسې غلط پاسورډ ولیکه!");
+            }
         }
-    } else {
-        panel.classList.add("hidden");
-        document.getElementById("toggleAdminBtn").textContent = "Admin ⚙️";
-        renderProducts();
-    }
-});
 
-document.getElementById("prodPhoto").addEventListener("change", function(e) {
-    const file = e.target.files[0];
-    if (file) {
-        const reader = new FileReader();
-        reader.onload = function(evt) {
-            tempImage = evt.target.result;
-        };
-        reader.readAsDataURL(file);
-    }
-});
+        // کله چې پاڼه ریفریش شي که مخکې لاګین وي
+        window.onload = function() {
+            if (localStorage.getItem("isAdmin") === "true") {
+                document.getElementById("admin-btn").style.display = "inline-flex";
+            }
+        }
 
-document.getElementById("productForm").addEventListener("submit", function(e) {
-    e.preventDefault();
-    const editId = document.getElementById("editIndex").value;
-    const existing = editId ? products.find(x => x.id === editId) : null;
-
-    const newItem = {
-        id: editId || "p_" + Date.now(),
-        name: document.getElementById("prodName").value.trim(),
-        company: document.getElementById("prodCompany").value.trim(),
-        size: document.getElementById("prodSize").value.trim(),
-        selling: Number(document.getElementById("prodSelling").value),
-        stock: Number(document.getElementById("prodStock").value) || 0,
-        image: tempImage || (existing ? existing.image : starterImg)
-    };
-
-    if (editId) {
-        const idx = products.findIndex(x => x.id === editId);
-        if (idx !== -1) products[idx] = newItem;
-    } else {
-        products.push(newItem);
-    }
-
-    localStorage.setItem("medica_pharma_items_v4", JSON.stringify(products));
-    resetForm();
-    renderProducts();
-});
-
-function editProd(id) {
-    const p = products.find(x => x.id === id);
-    if (!p) return;
-    document.getElementById("editIndex").value = p.id;
-    document.getElementById("prodName").value = p.name;
-    document.getElementById("prodCompany").value = p.company || "";
-    document.getElementById("prodSize").value = p.size || "";
-    document.getElementById("prodSelling").value = p.selling;
-    document.getElementById("prodStock").value = p.stock || 0;
-    tempImage = p.image;
-    document.getElementById("cancelBtn").classList.remove("hidden");
-    document.getElementById("adminPanel").scrollIntoView({ behavior: "smooth" });
-}
-
-function deleteProd(id) {
-    if (confirm("Are you sure you want to delete this medication?")) {
-        products = products.filter(x => x.id !== id);
-        localStorage.setItem("medica_pharma_items_v4", JSON.stringify(products));
-        renderProducts();
-    }
-}
-
-function resetForm() {
-    document.getElementById("productForm").reset();
-    document.getElementById("editIndex").value = "";
-    document.getElementById("cancelBtn").classList.add("hidden");
-    tempImage = "";
-}
-
-document.getElementById("cancelBtn").addEventListener("click", resetForm);
-
-updateCartCount();
-renderProducts();
-</script>
+        function openAdminPanel() {
+            alert("تاسې اوس اډمین پینل ته داخل شوئ!");
+            // دلته کولی شئ د اډمین پینل پاڼې ته لاړ شئ
+        }
+    </script>
 </body>
 </html>
