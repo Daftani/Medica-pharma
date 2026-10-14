@@ -4,14 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Medica Pharma - Professional Wholesale & Distribution</title>
-    <!-- FontAwesome Icons for Home, Order, Admin, etc. -->
+    <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary-color: #008080;
-            --secondary-color: #004d4d;
+            --primary-color: #00796b;
+            --secondary-color: #004d40;
             --accent-color: #ff9900;
-            --bg-gradient: linear-gradient(135deg, #00b09b, #96c93d);
             --light-bg: #f9f9f9;
             --text-dark: #333;
         }
@@ -28,52 +27,52 @@
             background: linear-gradient(135deg, #00796b, #004d40);
             color: white;
             text-align: center;
-            padding: 30px 20px;
+            padding: 25px 15px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
 
         .logo-container img {
-            max-width: 180px;
+            max-width: 120px;
             height: auto;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
             border-radius: 8px;
             background: white;
-            padding: 5px;
+            padding: 4px;
         }
 
         header h1 {
-            margin: 10px 0 5px 0;
-            font-size: 2.5rem;
+            margin: 5px 0;
+            font-size: 2.2rem;
             letter-spacing: 1px;
         }
 
         header p {
-            margin: 0 0 20px 0;
-            font-size: 1.1rem;
+            margin: 0 0 15px 0;
+            font-size: 1rem;
             opacity: 0.9;
         }
 
-        /* Top Action Buttons (Admin & Cart) */
         .top-actions {
             display: flex;
             justify-content: center;
-            gap: 15px;
-            margin-bottom: 20px;
+            gap: 10px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
         }
 
         .btn {
             background-color: var(--accent-color);
             color: white;
             border: none;
-            padding: 10px 20px;
-            border-radius: 25px;
+            padding: 8px 16px;
+            border-radius: 20px;
             cursor: pointer;
             font-weight: bold;
-            font-size: 1rem;
+            font-size: 0.9rem;
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            gap: 6px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             transition: 0.3s;
             text-decoration: none;
         }
@@ -83,22 +82,20 @@
             transform: translateY(-2px);
         }
 
-        /* Admin button hidden by default unless unlocked */
         #admin-btn {
             display: none;
             background-color: #34495e;
         }
 
-        /* Navigation Menu */
         nav {
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
-            gap: 10px;
+            gap: 8px;
             background: rgba(255, 255, 255, 0.15);
-            padding: 12px;
-            border-radius: 30px;
-            max-width: 700px;
+            padding: 8px;
+            border-radius: 25px;
+            max-width: 650px;
             margin: 0 auto;
             backdrop-filter: blur(5px);
         }
@@ -107,14 +104,14 @@
             background: transparent;
             border: none;
             color: white;
-            padding: 10px 20px;
-            border-radius: 20px;
+            padding: 8px 15px;
+            border-radius: 15px;
             cursor: pointer;
-            font-size: 1rem;
+            font-size: 0.95rem;
             font-weight: 600;
             display: inline-flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
             transition: 0.3s;
         }
 
@@ -124,67 +121,62 @@
             box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
 
-        /* Main Content Container */
         .container {
-            max-width: 1000px;
-            margin: 30px auto;
-            padding: 0 20px;
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 0 15px;
         }
 
         .tab-content {
             display: none;
             background: white;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
         }
 
         .tab-content.active {
             display: block;
         }
 
-        /* Banner Image in Home */
+        /* د انځور د اندازې سخته کنترولونه ترڅو ډیر غټ نشي */
         .hero-banner {
             width: 100%;
-            max-height: 400px;
+            max-height: 250px;
             object-fit: cover;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            margin-bottom: 15px;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.1);
         }
 
-        /* Footer & Creator Credit */
         footer {
             text-align: center;
-            padding: 25px;
+            padding: 20px;
             background-color: #222;
             color: white;
-            margin-top: 50px;
+            margin-top: 40px;
+            font-size: 0.9rem;
         }
 
         footer .creator {
-            margin-top: 8px;
+            margin-top: 6px;
             color: var(--accent-color);
             font-weight: bold;
-            font-size: 1.05rem;
         }
     </style>
 </head>
 <body>
 
     <header>
-        <!-- د لوګو برخه -->
         <div class="logo-container">
             <img src="watermarked_img_13417041837332475040.jpg" alt="Medica Pharma Logo">
         </div>
         <h1>MEDICA PHARMA</h1>
         <p>Professional Wholesale & Distribution Pharmaceuticals</p>
         
-        <!-- د اډمین او کارټ تڼۍ -->
         <div class="top-actions">
-            <!-- Admin button (يوازې تاسو ته ښکاري یا د پاسورډ په واسطه خلاصیږي) -->
             <button id="admin-btn" class="btn" onclick="openAdminPanel()">
-                <i class="fa-solid fa-user-shield"></i> Admin Panel
+                <i class="fa-solid fa-user-shield"></i> Admin
             </button>
             <button class="btn" onclick="switchTab('order')">
                 <i class="fa-solid fa-cart-shopping"></i> Cart (<span id="cart-count">0</span>)
@@ -194,13 +186,12 @@
             </button>
         </div>
 
-        <!-- اصلي مینو او نښې -->
         <nav>
             <button class="tab-btn active" onclick="switchTab('home')">
                 <i class="fa-solid fa-house"></i> Home
             </button>
             <button class="tab-btn" onclick="switchTab('about')">
-                <i class="fa-solid fa-circle-info"></i> About Us
+                <i class="fa-solid fa-circle-info"></i> About
             </button>
             <button class="tab-btn" onclick="switchTab('products')">
                 <i class="fa-solid fa-pills"></i> Products
@@ -215,34 +206,29 @@
     </header>
 
     <div class="container">
-        <!-- Home Tab -->
         <div id="home" class="tab-content active">
-            <!-- د کور پاڼې مسلکي انځور -->
+            <!-- متوازن او کوچنی شوی انځور -->
             <img src="watermarked_img_3862391051246070513.jpg" alt="Medica Pharma Warehouse" class="hero-banner">
             
             <h2>Welcome to Medica Pharma</h2>
             <p>Your trusted and reliable wholesale partner for high-quality medicines and healthcare distribution. Competitive pricing in Afghanis (AFN) and US Dollars (USD).</p>
         </div>
 
-        <!-- About Us Tab -->
         <div id="about" class="tab-content">
             <h2>About Medica Pharma</h2>
-            <p><strong>Medica Pharma</strong> is a premier wholesale and distribution pharmaceutical organization dedicated to providing high-quality medicines, surgical items, and healthcare solutions across the region.</p>
+            <p><strong>Medica Pharma</strong> is a premier wholesale and distribution pharmaceutical organization dedicated to providing high-quality medicines and healthcare solutions.</p>
         </div>
 
-        <!-- Products Tab -->
         <div id="products" class="tab-content">
             <h2>Medicine Management & Products</h2>
             <p>Browse our verified list of pharmaceuticals and wholesale stock.</p>
         </div>
 
-        <!-- Order Tab -->
         <div id="order" class="tab-content">
             <h2>Place Your Order</h2>
             <p>Review your selected cart items and submit your order directly via WhatsApp or Email.</p>
         </div>
 
-        <!-- Contact Tab -->
         <div id="contact" class="tab-content">
             <h2>Contact Us</h2>
             <p>📍 <strong>Address:</strong> Main Pharmacy Wholesale Market, Kabul, Afghanistan</p>
@@ -252,14 +238,12 @@
 
     <footer>
         <p>© 2026 MEDICA PHARMA Online Wholesale Store — All rights reserved.</p>
-        <!-- ستاسو نوم د ډزاین کونکي په توګه -->
         <div class="creator">
             <i class="fa-solid fa-code"></i> Designed & Developed by: Daftani
         </div>
     </footer>
 
     <script>
-        // د ټبونو د بدلولو جاواسکریپټ فنکشن
         function switchTab(tabId) {
             const contents = document.querySelectorAll('.tab-content');
             contents.forEach(c => c.classList.remove('active'));
@@ -271,10 +255,9 @@
             event.currentTarget.classList.add('active');
         }
 
-        // د اډمین د محرم ساتلو او فعالولو لپاره سادھ لاره (پاسورډ: admin123)
         function promptAdminLogin() {
             let pass = prompt("لطفاً د اډمین پاسورډ ولیکئ:");
-            if (pass === "daftani123") { // دلته خپل خوښې پاسورډ بدلولی شئ
+            if (pass === "daftani123") {
                 localStorage.setItem("isAdmin", "true");
                 document.getElementById("admin-btn").style.display = "inline-flex";
                 alert("اډمین پینل ته په خیر راغلل!");
@@ -283,7 +266,6 @@
             }
         }
 
-        // کله چې پاڼه ریفریش شي که مخکې لاګین وي
         window.onload = function() {
             if (localStorage.getItem("isAdmin") === "true") {
                 document.getElementById("admin-btn").style.display = "inline-flex";
@@ -292,7 +274,6 @@
 
         function openAdminPanel() {
             alert("تاسې اوس اډمین پینل ته داخل شوئ!");
-            // دلته کولی شئ د اډمین پینل پاڼې ته لاړ شئ
         }
     </script>
 </body>
