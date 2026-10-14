@@ -82,9 +82,10 @@
             transform: translateY(-2px);
         }
 
-        #admin-btn {
+        /* Admin button completely hidden for normal users */
+        #admin-tab-btn {
             display: none;
-            background-color: #34495e;
+            background-color: #c0392b;
         }
 
         nav {
@@ -95,7 +96,7 @@
             background: rgba(255, 255, 255, 0.15);
             padding: 8px;
             border-radius: 25px;
-            max-width: 650px;
+            max-width: 700px;
             margin: 0 auto;
             backdrop-filter: blur(5px);
         }
@@ -148,6 +149,16 @@
             box-shadow: 0 3px 8px rgba(0,0,0,0.1);
         }
 
+        /* Form styling for Order */
+        .order-form input, .order-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0 15px 0;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            box-sizing: border-box;
+        }
+
         footer {
             text-align: center;
             padding: 20px;
@@ -174,14 +185,16 @@
         <p>Professional Wholesale & Distribution Pharmaceuticals</p>
         
         <div class="top-actions">
-            <button id="admin-btn" class="btn" onclick="openAdminPanel()">
-                <i class="fa-solid fa-user-shield"></i> Admin
-            </button>
             <button class="btn" onclick="switchTab('order')">
                 <i class="fa-solid fa-cart-shopping"></i> Cart (<span id="cart-count">0</span>)
             </button>
-            <button class="btn" onclick="promptAdminLogin()" style="background-color: #555; font-size: 0.8rem; padding: 5px 10px;">
-                <i class="fa-solid fa-key"></i> Login
+            <!-- Separate Login Button for Admin -->
+            <button id="login-trigger-btn" class="btn" onclick="promptAdminLogin()" style="background-color: #555;">
+                <i class="fa-solid fa-key"></i> Admin Login
+            </button>
+            <!-- Logout Button (Shows only when logged in) -->
+            <button id="logout-btn" class="btn" onclick="adminLogout()" style="background-color: #c0392b; display: none;">
+                <i class="fa-solid fa-right-from-bracket"></i> Logout
             </button>
         </div>
 
@@ -201,36 +214,69 @@
             <button class="tab-btn" onclick="switchTab('contact')">
                 <i class="fa-solid fa-envelope"></i> Contact
             </button>
+            <!-- Hidden Admin Tab button -->
+            <button id="admin-tab-btn" class="tab-btn" onclick="switchTab('admin-panel')">
+                <i class="fa-solid fa-user-shield"></i> Admin Panel
+            </button>
         </nav>
     </header>
 
     <div class="container">
+        <!-- Home Tab -->
         <div id="home" class="tab-content active">
             <img src="IMG_1145.jpeg" alt="Medica Pharma Warehouse" class="hero-banner">
-            
             <h2>Welcome to Medica Pharma</h2>
             <p>Your trusted and reliable wholesale partner for high-quality medicines and healthcare distribution. Competitive pricing in Afghanis (AFN) and US Dollars (USD).</p>
         </div>
 
+        <!-- About Tab -->
         <div id="about" class="tab-content">
             <h2>About Medica Pharma</h2>
             <p><strong>Medica Pharma</strong> is a premier wholesale and distribution pharmaceutical organization dedicated to providing high-quality medicines and healthcare solutions.</p>
         </div>
 
+        <!-- Products Tab -->
         <div id="products" class="tab-content">
             <h2>Medicine Management & Products</h2>
             <p>Browse our verified list of pharmaceuticals and wholesale stock.</p>
+            <!-- Products Grid or List can be placed here -->
         </div>
 
+        <!-- Order Tab with Input Fields -->
         <div id="order" class="tab-content">
             <h2>Place Your Order</h2>
-            <p>Review your selected cart items and submit your order directly via WhatsApp or Email.</p>
+            <p>Review your selected items and fill out your information to submit your order via WhatsApp.</p>
+            
+            <div class="order-form">
+                <label><strong>ستاسو نوم / Pharmacy Name:</strong></label>
+                <input type="text" id="cust-name" placeholder="د بېلګې په توګه: احمد فارمسي">
+
+                <label><strong>تلفن شمېره / Phone Number:</strong></label>
+                <input type="text" id="cust-phone" placeholder="د بېلګې په توګه: 0780000000">
+
+                <label><strong>پته / Address:</strong></label>
+                <input type="text" id="cust-address" placeholder="کابل، افغانستان">
+
+                <label><strong>نور تفصیلي معلومات / Notes:</strong></label>
+                <textarea id="cust-notes" rows="3" placeholder="که کوم ځانګړی امر لرئ..."></textarea>
+
+                <button class="btn" onclick="submitOrderWhatsApp()" style="background-color: #27ae60; width: 100%; justify-content: center; padding: 12px;">
+                    <i class="fa-brands fa-whatsapp"></i> Send Order via WhatsApp
+                </button>
+            </div>
         </div>
 
+        <!-- Contact Tab -->
         <div id="contact" class="tab-content">
             <h2>Contact Us</h2>
             <p>📍 <strong>Address:</strong> Main Pharmacy Wholesale Market, Kabul, Afghanistan</p>
             <p>📞 <strong>Phone / WhatsApp:</strong> +93 782 665 516</p>
+        </div>
+
+        <!-- Protected Admin Panel Tab -->
+        <div id="admin-panel" class="tab-content">
+            <h2><i class="fa-solid fa-user-shield"></i> Admin Panel (Restricted)</h2>
+            <p>Welcome to the admin area. Here you can manage products, prices, and settings.</p>
         </div>
     </div>
 
@@ -253,25 +299,55 @@
             event.currentTarget.classList.add('active');
         }
 
+        // Admin Login Function
         function promptAdminLogin() {
-            let pass = prompt("لطفاً د اډمین پاسورډ ولیکئ:");
-            if (pass === "daftani123") {
+            let pass = prompt("لطفاً د اډمین پټ نوم (پاسورډ) ولیکئ:");
+            if (pass === "daftani123") { // دلته خپل پاسورډ بدلولی شئ
                 localStorage.setItem("isAdmin", "true");
-                document.getElementById("admin-btn").style.display = "inline-flex";
-                alert("اډمین پینل ته په خیر راغلل!");
+                showAdminUI();
+                alert("اډمین پینل ته په بریالیتوب سره داخل شوئ!");
             } else {
                 alert("تاسې غلط پاسورډ ولیکه!");
             }
         }
 
+        function showAdminUI() {
+            document.getElementById("admin-tab-btn").style.display = "inline-flex";
+            document.getElementById("logout-btn").style.display = "inline-flex";
+            document.getElementById("login-trigger-btn").style.display = "none";
+        }
+
+        function adminLogout() {
+            localStorage.removeItem("isAdmin");
+            document.getElementById("admin-tab-btn").style.display = "none";
+            document.getElementById("logout-btn").style.display = "none";
+            document.getElementById("login-trigger-btn").style.display = "inline-flex";
+            switchTab('home');
+            alert("تاسې له اډمین اکاونټ ووتئ.");
+        }
+
+        // Check login status on page load
         window.onload = function() {
             if (localStorage.getItem("isAdmin") === "true") {
-                document.getElementById("admin-btn").style.display = "inline-flex";
+                showAdminUI();
             }
         }
 
-        function openAdminPanel() {
-            alert("تاسې اوس اډمین پینل ته داخل شوئ!");
+        // WhatsApp Order Submission
+        function submitOrderWhatsApp() {
+            let name = document.getElementById("cust-name").value;
+            let phone = document.getElementById("cust-phone").value;
+            let address = document.getElementById("cust-address").value;
+            let notes = document.getElementById("cust-notes").value;
+
+            if(!name || !phone) {
+                alert("لطفاً خپل نوم او تلفن شمېره ولیکئ!");
+                return;
+            }
+
+            let message = `New Order from Medica Pharma:\nName: ${name}\nPhone: ${phone}\nAddress: ${address}\nNotes: ${notes}`;
+            let encodedMessage = encodeURIComponent(message);
+            window.open(`https://wa.me/93782665516?text=${encodedMessage}`, '_blank');
         }
     </script>
 </body>
